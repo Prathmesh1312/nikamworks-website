@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services - Nikam Engineering Works</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      margin: 0;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      background: linear-gradient(to right, #693e99, #9b59b6);
+      color: white;
+      flex-wrap: wrap;
+      height: 8vh;
+    }
+
+    .topbar h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      padding: 1rem 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 0;
+      background: #ffd700;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a.active {
+      color: #ffd700;
+    }
+
+    nav a.active::after {
+      width: 100%;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #814db0;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .card img {
+      height: 180px;
+      object-fit: cover;
+    }
+
+    footer {
+      font-size: 0.95rem;
+      background: #2e1f47;
+      color: #ddd;
+      padding: 2rem 1rem;
+    }
+
+    .footer-grid {
+      width: 100%;
+      padding: 0 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      color: #ffd700;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 1rem;
+      color: #814db0;
+    }
+
+    .socials a {
+      margin-right: 1rem;
+      text-decoration: none;
+      color: #ffd700;
+    }
+
+    .socials a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <h1>🛠️ Nikam Engineering Works</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <main class="container-fluid px-5">
+    <h2 class="section-title">Our Services</h2>
+
+    <!-- Machining & Cutting -->
+    <h4 class="mb-3 mt-4 text-primary">Machining & Cutting</h4>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="card">
+          <img src="https://media.istockphoto.com/id/1395562512/photo/the-vertical-scene-cnc-milling-machine-cutting-the-shell-mold-parts-with-oil-coolant-method.jpg?s=1024x1024&w=is&k=20&c=ISF8B6kkbEMecwiVWzS21tDQ_lrBbgYabMP55dnY7dM=" class="card-img-top" alt="VMC">
+          <div class="card-body">
+            <h5 class="card-title">VMC Machining</h5>
+            <p class="card-text">Precision milling of components using advanced VMC machines.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <img src="https://media.istockphoto.com/id/580108428/photo/metalworking-industry-cutting-tool-making-worm-shaft-at-metal-working.jpg?s=1024x1024&w=is&k=20&c=-2KJsCBwvQUfJRui4kP59slT5CQXUDGxNQ86HvWcAlA=" class="card-img-top" alt="CNC Turning">
+          <div class="card-body">
+            <h5 class="card-title">CNC Turning</h5>
+            <p class="card-text">Accurate turning for round and cylindrical components.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <img src="https://media.istockphoto.com/id/1355381823/photo/sheet-metal-bending-on-a-hydraulic-press-brake.jpg?s=1024x1024&w=is&k=20&c=DmYKOvgLruWKO4LgqxV95IdXSab2NMrrGY2ibD51r-4=" class="card-img-top" alt="CNC Bending">
+          <div class="card-body">
+            <h5 class="card-title">CNC Bending</h5>
+            <p class="card-text">Clean bending of sheet metal parts with precise angles.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <img src="https://media.istockphoto.com/id/1182469238/photo/cnc-laser-machinery-for-metal-cutting.jpg?s=1024x1024&w=is&k=20&c=KpWx0hOA-8t9YhxqLSKzxQPf-9nioq9_o8DP05HCj-c=" class="card-img-top" alt="Laser Cutting">
+          <div class="card-body">
+            <h5 class="card-title">Laser Cutting</h5>
+            <p class="card-text">Fast and accurate cutting for multiple materials.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Welding & Fabrication -->
+    <h4 class="mb-3 mt-5 text-primary">Welding & Fabrication</h4>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://media.istockphoto.com/id/1372488035/photo/tig-welding-of-polished-stainless-steel-pipe.jpg?s=1024x1024&w=is&k=20&c=9xQsxgc6jazAL3RhMJYFUT-uuHWi4r4VYG_zkvhy9B0=" class="card-img-top" alt="TIG Welding">
+          <div class="card-body">
+            <h5 class="card-title">TIG / Laser Welding</h5>
+            <p class="card-text">Repair of dies and molds using TIG/laser welding on SS, aluminum, titanium, and more.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/300x180?text=Fabrication" class="card-img-top" alt="Fabrication">
+          <div class="card-body">
+            <h5 class="card-title">Structural Fabrication</h5>
+            <p class="card-text">Fabrication of industrial trolleys, enclosures, and metal structures.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tooling & Fixtures -->
+    <h4 class="mb-3 mt-5 text-primary">Tooling & Fixtures</h4>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/300x180?text=Jigs+%26+Fixtures" class="card-img-top" alt="Jigs">
+          <div class="card-body">
+            <h5 class="card-title">Jigs & Fixtures</h5>
+            <p class="card-text">High-accuracy tooling systems custom-built for your application.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Automation -->
+    <h4 class="mb-3 mt-5 text-primary">Automation</h4>
+    <div class="row g-4 mb-5">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/300x180?text=Automation" class="card-img-top" alt="Automation">
+          <div class="card-body">
+            <h5 class="card-title">Automation & Robotics</h5>
+            <p class="card-text">Design and development of robotic work cells and automation systems.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>123, MIDC Industrial Area<br />Pune, Maharashtra 411019</p>
+        <p>Email: info@nikamengineering.com<br />Phone: +91 98765 43210</p>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="socials">
+          <a href="#">🌐 Website</a>
+          <a href="#">📘 Facebook</a>
+          <a href="#">📷 Instagram</a>
+          <a href="#">💼 LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <p class="ms-3 mt-3">&copy; 2025 Nikam Engineering Works. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

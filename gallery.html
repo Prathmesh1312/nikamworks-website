@@ -1,89 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gallery - Nikam Engineering Works</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      margin: 0;
       background: #f9f9f9;
       color: #333;
     }
-    header {
-      background: #9b59b6;
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      background: linear-gradient(to right, #693e99, #9b59b6);
       color: white;
-      padding: 2rem;
-      text-align: center;
+      flex-wrap: wrap;
+      height: 8vh;
     }
+
+    .topbar h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
     nav {
       display: flex;
+      gap: 2rem;
+      padding: 1rem 2rem;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 1.5rem;
-      background: #814db0;
-      padding: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+
     nav a {
       color: white;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s ease;
     }
-    section {
-      padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 0;
+      background: #ffd700;
+      transition: width 0.3s ease;
     }
-    h2 {
-      color: #814db0;
-      text-align: center;
+
+    nav a:hover {
+      color: #ffd700;
     }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-    .gallery-grid img {
+
+    nav a:hover::after {
       width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    footer {
-      background: #eee;
+
+    nav a.active {
+      color: #ffd700;
+    }
+
+    nav a.active::after {
+      width: 100%;
+    }
+
+    .gallery-title {
       text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #777;
+      margin: 2rem 0;
+      color: #814db0;
+    }
+
+    .gallery-card {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-card:hover {
+      transform: scale(1.03);
+    }
+
+    footer {
+      font-size: 0.95rem;
+      background: #2e1f47;
+      color: #ddd;
+      padding: 2rem 1rem;
+    }
+
+    .footer-grid {
+      width: 100%;
+      padding: 0 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      color: #ffd700;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 1rem;
+      color: #814db0;
+    }
+
+    .socials a {
+      margin-right: 1rem;
+      text-decoration: none;
+      color: #ffd700;
+    }
+
+    .socials a:hover {
+      color: #fff;
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>Project Gallery</h1>
-  </header>
+  <!-- Navbar -->
+  <div class="topbar">
+    <h1>📸 Nikam Engineering Works</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html" class="active">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+  <!-- Gallery Section -->
+  <main class="container my-5">
+    <h2 class="gallery-title">Project Highlights</h2>
+    <div id="galleryContainer" class="row g-4"></div>
+  </main>
 
-  <section>
-    <h2>Our Work</h2>
-    <div class="gallery-grid">
-      <img src="https://via.placeholder.com/300x200" alt="Robot Cell Fabrication">
-      <img src="https://via.placeholder.com/300x200" alt="SS Bins for Consumables">
-      <img src="https://via.placeholder.com/300x200" alt="Aluminium Deg Welding">
-      <img src="https://via.placeholder.com/300x200" alt="Horse Riding Stand">
-      <img src="https://via.placeholder.com/300x200" alt="Leak Testing Fixture">
-      <img src="https://via.placeholder.com/300x200" alt="Valve Grinding Automation">
-    </div>
-  </section>
+  <!-- Modals Container -->
+  <div id="modalsContainer"></div>
 
+  <!-- Footer -->
   <footer>
-    &copy; 2025 Nikam Engineering Works. All rights reserved.
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>123, MIDC Industrial Area<br>Pune, Maharashtra 411019</p>
+        <p>Email: info@nikamengineering.com<br>Phone: +91 98765 43210</p>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="socials">
+          <a href="#">🌐 Website</a>
+          <a href="#">📘 Facebook</a>
+          <a href="#">📷 Instagram</a>
+          <a href="#">💼 LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <p class="ms-3 mt-3">&copy; 2025 Nikam Engineering Works. All rights reserved.</p>
   </footer>
+
+  <!-- Gallery Data & Script -->
+  <script>
+ const galleryData = [
+      {
+        id: 'robotCell',
+        title: 'Robot Cell Fabrication',
+        description: 'Design and build of a robotic work cell for industrial automation.',
+        images: [
+          { src: 'https://plus.unsplash.com/premium_photo-1677094310899-02303289cadf?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cm9ib3R8ZW58MHx8MHx8fDA%3D', caption: 'Robotic Arm Precision' },
+          { src: 'https://images.unsplash.com/photo-1546776310-eef45dd6d63c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cm9ib3R8ZW58MHx8MHx8fDA%3D', caption: 'Fully assembled work cell' }
+        ]
+      },
+      {
+        id: 'ssBins',
+        title: 'SS Bins for Consumables',
+        description: 'Stainless steel bins used for material handling and segregation.',
+        images: [
+          { src: 'https://images.unsplash.com/photo-1730067933554-f13635cb2fc6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8QmlucyUyMGZvciUyMENvbnN1bWFibGVzfGVufDB8fDB8fHww', caption: 'Bins ready for mounting' },
+          { src: 'https://images.unsplash.com/photo-1577010768912-19874598a38e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fEJpbnMlMjBmb3IlMjBDb25zdW1hYmxlc3xlbnwwfHwwfHx8MA%3D%3D', caption: 'Close‑up finish' }
+        ]
+      },
+      {
+        id: 'aluminiumWelding',
+        title: 'Aluminium Deg Welding',
+        description: 'High-quality TIG welding on aluminium assemblies.',
+        images: [
+          { src: 'https://images.unsplash.com/photo-1615219023549-5c9abdb7df9a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fEFsdW1pbml1bSUyMERlZyUyMFdlbGRpbmd8ZW58MHx8MHx8fDA%3D', caption: 'TIG welding sparks' },
+          { src: 'https://images.unsplash.com/photo-1547555706-54bcf05bbad1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fEFsdW1pbml1bSUyMERlZyUyMFdlbGRpbmd8ZW58MHx8MHx8fDA%3D', caption: 'Clean weld bead' }
+        ]
+      },
+      {
+        id: 'horseStand',
+        title: 'Horse Riding Stand',
+        description: 'Custom metal stand for supporting riding equipment.',
+        images: [
+          { src: 'https://images.unsplash.com/photos/OX5D...8', caption: 'Frame assembly' },
+          { src: 'https://images.unsplash.com/photos/OX5D...8', caption: 'Finished powder coat' }
+        ]
+      },
+      {
+        id: 'leakFixture',
+        title: 'Leak Testing Fixture',
+        description: 'Precision fixture for air and liquid tightness testing.',
+        images: [
+          { src: 'https://images.unsplash.com/photo-...tpqc', caption: 'Fixture with ports' },
+          { src: 'https://images.unsplash.com/photo-...tpqc', caption: 'Final test bench' }
+        ]
+      },
+      {
+        id: 'valveAutomation',
+        title: 'Valve Grinding Automation',
+        description: 'Automated grinding setup for valve production.',
+        images: [
+          { src: 'https://images.unsplash.com/photos/8IbaIKwE5vk', caption: 'Valve grinding station' },
+          { src: 'https://images.unsplash.com/photos/gCMQCQqqE3Q', caption: 'Robot grinding valve surface' }
+        ]
+      }
+    ];
+
+
+    const galleryContainer = document.getElementById("galleryContainer");
+    const modalsContainer = document.getElementById("modalsContainer");
+
+    galleryData.forEach((project, index) => {
+      // Thumbnail card
+      galleryContainer.innerHTML += `
+        <div class="col-md-4">
+          <div class="card gallery-card" data-bs-toggle="modal" data-bs-target="#${project.id}Modal">
+            <img src="${project.images[0].src}" class="card-img-top" style='background-size: auto;' height=350px alt="${project.title}">
+            <div class="card-body">
+              <h5 class="card-title">${project.title}</h5>
+              <p class="card-text">${project.description}</p>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Modal with carousel
+      const carouselItems = project.images.map((img, i) => `
+        <div class="carousel-item ${i === 0 ? 'active' : ''}">
+          <img src="${img.src}" class="d-block w-100" height=700px alt="${img.caption}">
+          <div class="carousel-caption d-none d-md-block">
+            <p>${img.caption}</p>
+          </div>
+        </div>
+      `).join('');
+
+      modalsContainer.innerHTML += `
+        <div class="modal fade" id="${project.id}Modal" tabindex="-1">
+          <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">${project.title}</h5>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <p>${project.description}</p>
+                <div id="${project.id}Carousel" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    ${carouselItems}
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#${project.id}Carousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#${project.id}Carousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+  </script>
 </body>
 </html>
